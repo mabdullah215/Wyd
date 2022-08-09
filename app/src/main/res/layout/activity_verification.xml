@@ -83,14 +83,14 @@
         android:textStyle="normal" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:src="@drawable/ic_fwd"
         android:id="@+id/img_proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/input_layout"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginRight="@dimen/_10sdp"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/ic_fwd" />
 
 
 

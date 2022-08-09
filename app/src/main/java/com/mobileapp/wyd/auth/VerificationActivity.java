@@ -2,10 +2,14 @@ package com.mobileapp.wyd.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mobileapp.wyd.ProfileActivity;
 import com.mobileapp.wyd.R;
 
 import java.text.DecimalFormat;
@@ -20,6 +24,13 @@ public class VerificationActivity extends AppCompatActivity
         setContentView(R.layout.activity_verification);
         tvTimer=findViewById(R.id.tv_timer);
         startTimer();
+        ImageView imgProceed=findViewById(R.id.img_proceed);
+        imgProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), ProfileActivity.class));
+            }
+        });
     }
 
     void startTimer() {
