@@ -58,6 +58,25 @@ public class VerificationActivity extends BaseActivity
             }
         });
 
+        tvTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                String title=tvTimer.getText().toString();
+                if(title.equalsIgnoreCase("Resend SMS NOW"))
+                {
+                    AsyncTask.execute(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            sendVerificationCode(number);
+                        }
+                    });
+                }
+            }
+        });
+
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
