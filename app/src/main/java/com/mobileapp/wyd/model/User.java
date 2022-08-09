@@ -10,6 +10,7 @@ public class User implements Serializable
     String email;
     String image;
     String description;
+    String gender;
     String phone;
 
     public User()
@@ -19,6 +20,7 @@ public class User implements Serializable
         this.phone="";
         this.description="";
         this.image="";
+        this.gender="male";
     }
 
     public String getImage() {

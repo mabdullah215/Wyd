@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner"
+            android:backgroundTint="@color/purple_200"
+            android:padding="@dimen/_4sdp"
+            android:textSize="10sp"
+            android:minWidth="@dimen/_60sdp"
+            android:textAlignment="center"
+            android:text="Lost pet"
+            android:textColor="@color/white" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/tv_category"
+            android:id="@+id/tv_date"
+            android:layout_centerVertical="true"
+            android:textSize="12sp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/uber_move_bold"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/img_source"
+            android:background="@drawable/photo_corner"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_name"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#333333"
+        android:fontFamily="@font/uber_move_bold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_address"
+        android:textSize="10sp"
+        android:fontFamily="@font/uber_move_regular"
+        android:textColor="#666666"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_participents"
+        android:textSize="10sp"
+        android:textColor="#666666"
+        android:fontFamily="@font/uber_move_regular"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

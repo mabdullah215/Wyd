@@ -5,47 +5,67 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/label_bookings"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:fontFamily="@font/uber_move_bold"
-        android:text="WYD App"
-        android:layout_toLeftOf="@+id/menu_layout"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/sub_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:fontFamily="@font/uber_move_regular"
-        android:text="explore nearby events"
-        android:layout_below="@+id/label_bookings"
-        android:textColor="#cccccc"
-        android:textSize="12sp" />
-
-    <LinearLayout
-        android:layout_width="@dimen/_170sdp"
-        android:gravity="end"
-        android:id="@+id/menu_layout"
-        android:layout_alignParentRight="true"
+        android:id="@+id/topPanel"
         android:layout_height="wrap_content">
 
-        <com.mobileapp.wyd.utils.CustomerMenu
-            android:layout_width="wrap_content"
-            android:id="@+id/customer_menu"
-            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/label_bookings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/uber_move_bold"
+            android:text="WYD App"
+            android:layout_toLeftOf="@+id/menu_layout"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/sub_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/uber_move_regular"
+            android:text="explore nearby events"
+            android:layout_below="@+id/label_bookings"
+            android:textColor="#cccccc"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="@dimen/_170sdp"
+            android:gravity="end"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/menu_layout"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+
+            <com.mobileapp.wyd.utils.CustomerMenu
+                android:layout_width="wrap_content"
+                android:id="@+id/customer_menu"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_below="@+id/sub_heading"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/filter_list"
+        android:overScrollMode="never"
+        android:layout_below="@+id/topPanel"
+        android:layout_height="@dimen/_50sdp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/data_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filter_list"
+        android:overScrollMode="never" />
 
     <TextView
         android:layout_width="@dimen/_100sdp"
@@ -58,6 +78,15 @@
         android:padding="12dp"
         android:fontFamily="@font/uber_move_bold"
         android:text="Add New Event"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/tv_empty"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:text="No Data found"
         android:layout_height="wrap_content"/>
 
 </RelativeLayout>

@@ -1,10 +1,14 @@
 package com.mobileapp.wyd;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -15,6 +19,7 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -26,8 +31,18 @@ import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.mobileapp.wyd.adapter.EventListAdapter;
+import com.mobileapp.wyd.adapter.FilterListAdapter;
 import com.mobileapp.wyd.auth.OnboardActivity;
 import com.mobileapp.wyd.data.DataStorage;
+import com.mobileapp.wyd.model.Event;
+import com.mobileapp.wyd.utils.CustomerMenu;
 import com.sanojpunchihewa.updatemanager.UpdateManager;
 import com.sanojpunchihewa.updatemanager.UpdateManagerConstant;
 
@@ -132,9 +147,70 @@ public class MainActivity extends BaseActivity {
             {
                 DataStorage storage=DataStorage.getInstance(getBaseContext());
                 storage.setUserLocation(location);
-                hideLoading();
+                setupData();
             }
         });
+    }
+
+    public void setupData()
+    {
+
+        RecyclerView filterRecycler=findViewById(R.id.filter_list);
+        TextView tvEmpty=findViewById(R.id.tv_empty);
+        filterRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        RecyclerView recyclerView=findViewById(R.id.data_list);
+        FilterListAdapter adapter=new FilterListAdapter(this);
+        filterRecycler.setAdapter(adapter);
+        adapter.setOnItemClickListener(new FilterListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position)
+            {
+                adapter.setSelected(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        ArrayList<Event>mList=new ArrayList<Event>();
+        EventListAdapter eventListAdapter=new EventListAdapter(getBaseContext(),mList);
+        recyclerView.setAdapter(eventListAdapter);
+        CollectionReference reference= FirebaseFirestore.getInstance().collection("events");
+        reference.addSnapshotListener(new EventListener<QuerySnapshot>()
+        {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error)
+            {
+                mList.clear();
+                for(DocumentSnapshot snapshot: value.getDocuments())
+                {
+                    Event event=snapshot.toObject(Event.class);
+                    mList.add(event);
+                }
+                if(mList.isEmpty())
+                {
+                    tvEmpty.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    tvEmpty.setVisibility(View.GONE);
+                }
+
+                hideLoading();
+                eventListAdapter.notifyDataSetChanged();
+            }
+        });
+
+        CustomerMenu customerMenu=findViewById(R.id.customer_menu);
+        customerMenu.setUpdateListener(new CustomerMenu.PositionUpdateListener() {
+            @Override
+            public void onPositionUpdate(int pos)
+            {
+                if(pos==2)
+                {
+                    showLogout();
+                }
+            }
+        });
+
     }
 
     public void showLogout()

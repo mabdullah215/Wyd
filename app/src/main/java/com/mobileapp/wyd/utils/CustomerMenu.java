@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class CustomerMenu extends RelativeLayout
 {
-    ImageView imgHome,imgNotifications,imgProfile;
+    ImageView imgHome,imgNotifications,imgLogout,imgProfile;
     ArrayList<ImageView>imgList=new ArrayList<>();
     PositionUpdateListener updateListener;
     int selected=0;
@@ -59,6 +59,7 @@ public class CustomerMenu extends RelativeLayout
         imgHome=findViewById(R.id.img_home);
         imgNotifications=findViewById(R.id.img_notification);
         imgProfile=findViewById(R.id.img_profile);
+        imgLogout=findViewById(R.id.img_logout);
         imgProfile.setClipToOutline(true);
         imgList.add(imgHome);
         imgList.add(imgNotifications);
@@ -83,13 +84,20 @@ public class CustomerMenu extends RelativeLayout
             }
         });
 
+        imgLogout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selected=2;
+                selectOption(selected);
+            }
+        });
 
         imgProfile.setOnClickListener(new OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                selected=2;
+                selected=3;
                 selectOption(selected);
             }
         });
