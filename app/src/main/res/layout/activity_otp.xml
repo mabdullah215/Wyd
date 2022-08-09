@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="match_parent"
+    tools:context=".auth.OtpActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_back"
+        android:src="@drawable/ic_back" />
+
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_20sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/uber_move_medium"
+            android:lineSpacingExtra="2.3sp"
+            android:text="Enter Phone Number"
+            android:textColor="#333333"
+            android:textSize="25sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="You will get a verification code"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_num"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/square_corner"
+            android:backgroundTint="#f2f2f2"
+            android:hint="Ex: +923135189007"
+            android:inputType="phone"
+            android:padding="15dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/uber_move_regular"
+            android:lineSpacingExtra="1.3sp"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:textStyle="normal"
+            tools:text="Follow phone number format “+971-505-5525-96”" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:lineSpacingExtra="1.5sp"
+        android:text="By continuing you are agree to\nTerms and conditions of WYD 2022"
+        android:textColor="#666666"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_fwd"
+        android:id="@+id/img_proceed"
+        android:layout_below="@id/input_layout"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</RelativeLayout>
