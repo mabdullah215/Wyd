@@ -65,8 +65,6 @@ public class VerificationActivity extends BaseActivity
             }
         });
 
-
-
         AsyncTask.execute(new Runnable()
         {
             @Override

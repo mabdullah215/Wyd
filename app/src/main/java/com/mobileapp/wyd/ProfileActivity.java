@@ -64,10 +64,12 @@ public class ProfileActivity extends BaseActivity {
                 String name=etUsername.getText().toString().trim();
                 String desc=etDesc.getText().toString().trim();
                 String email=etEmail.getText().toString().trim();
+                String phone=getIntent().getStringExtra("number");
                 User user=new User();
                 user.setName(name);
                 user.setDescription(desc);
                 user.setEmail(email);
+                user.setPhone(phone);
                 if(name.isEmpty()||desc.isEmpty()||email.isEmpty())
                 {
                     showToast("Input field missing");
@@ -148,6 +150,7 @@ public class ProfileActivity extends BaseActivity {
     public void updateFirebaseData(User user)
     {
         String id=FirebaseAuth.getInstance().getUid();
+        user.setId(id);
         DocumentReference mUserRef= FirebaseFirestore.getInstance().collection("users").document(id);
         mUserRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -155,9 +158,13 @@ public class ProfileActivity extends BaseActivity {
             {
                 hideLoading();
                 Toast.makeText(ProfileActivity.this, "Profile settings updated", Toast.LENGTH_SHORT).show();
-                finish();
+                Intent i = new Intent(ProfileActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         });
+
+
     }
 
     @Override
