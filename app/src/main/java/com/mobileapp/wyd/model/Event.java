@@ -11,13 +11,29 @@ public class Event
     Long timestamp;
     List<String> participents=new ArrayList<>();
     List<String> favorites=new ArrayList<>();
-    int maleCount;
+    int males;
     String address;
-    int femaleCount;
+    int females;
     List<String>photos;
     String category;
     double lat;
     double lon;
+
+    public int getMales() {
+        return males;
+    }
+
+    public void setMales(int males) {
+        this.males = males;
+    }
+
+    public int getFemales() {
+        return females;
+    }
+
+    public void setFemales(int females) {
+        this.females = females;
+    }
 
     public List<String> getFavorites() {
         return favorites;
@@ -83,21 +99,6 @@ public class Event
         this.participents = participents;
     }
 
-    public int getMaleCount() {
-        return maleCount;
-    }
-
-    public void setMaleCount(int maleCount) {
-        this.maleCount = maleCount;
-    }
-
-    public int getFemaleCount() {
-        return femaleCount;
-    }
-
-    public void setFemaleCount(int femaleCount) {
-        this.femaleCount = femaleCount;
-    }
 
     public List<String> getPhotos() {
         return photos;
