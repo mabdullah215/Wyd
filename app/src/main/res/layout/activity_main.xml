@@ -76,6 +76,7 @@
         android:backgroundTint="@color/purple_200"
         android:textColor="@color/white"
         android:padding="12dp"
+        android:visibility="gone"
         android:fontFamily="@font/uber_move_bold"
         android:text="Add New Event"
         android:layout_height="wrap_content"/>

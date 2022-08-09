@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="match_parent"
+    tools:context=".EventDetails">
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/uber_move_regular"
+            android:padding="@dimen/_10sdp"
+            android:text="Event Details"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/img_fav"
+            android:layout_toLeftOf="@+id/img_share"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:src="@drawable/ic_favorite"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/img_share"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_share"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/top_layout"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/data_layout"
+            android:layout_height="wrap_content">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:id="@+id/photo_data"
+                android:overScrollMode="never"
+                android:layout_height="wrap_content"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner"
+                    android:backgroundTint="#17ff5c64"
+                    android:textColor="#ff5c64"
+                    android:fontFamily="@font/uber_move_regular"
+                    android:padding="@dimen/_5sdp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_date"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/uber_move_bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"/>
+
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Event Name"
+                android:textSize="24sp"
+                android:id="@+id/tv_name"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/purple_200"
+                android:fontFamily="@font/uber_move_regular"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_4sdp"
+                android:textSize="10sp"
+                android:minWidth="@dimen/_50sdp"
+                android:textAlignment="center"
+                android:text=""
+                android:textColor="@color/white" />
+
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="@color/black"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_height="3dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text=""
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/tv_description"
+                android:fontFamily="@font/uber_move_regular"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tv_participents"
+                android:textColor="@color/purple_200"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/uber_move_regular"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="15dp"
+                android:id="@+id/map_card"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_height="@dimen/_150sdp">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/top_panel"
+                    android:layout_height="@dimen/_150sdp"
+                    tools:context=".AddLocationActivity" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/tv_event_going"
+                android:background="@drawable/square_corner"
+                android:padding="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="Yes, I'm Going to Event"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:backgroundTint="@color/purple_200"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</RelativeLayout>

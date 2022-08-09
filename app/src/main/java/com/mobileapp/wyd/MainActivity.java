@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -210,6 +211,39 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+    }
+
+    public void runTest()
+    {
+        String [] categories={"Bars","Party","Concert","Social"};
+        String[] titles={"Bar Crawl","Party Live","Live Concert","Fashion Show"};
+        String[] description={"A bar crawl is fun, festive and one of our favorite social events ideas for exploring a city. Before you begin, plan your route and map it all out for a fully immersive experience. You’ll want to choose a spot that has a good amount of bars to choose from, is easily walkable and has good transportation options to and from your starting point ",
+                "Yacht parties are one of the fancier types of social events, but they most certainly make a splash. Begin by selecting the date of your event and setting the budget. Is it a warm afternoon summer yacht party you’re envisioning or a dreamy winter wonderland on the water",
+        "Live concers are magical, mysterious and one of the most unique social events ideas. To get started with the planning, pick a theme and encourage attendees to pick their outfits (mask included, of course)",
+                "Throwing a fashion show is another one of our most festive social events ideas. Whether you’re hosting it at a venue or a home, find your runway first! This will be the spot where the models stroll up and down, showcasing their meticulously planned outfits. For a full fashion show party, get your guests involved"
+        };
+
+        CollectionReference reference=FirebaseFirestore.getInstance().collection("events");
+
+        for(int i=0;i<titles.length;i++)
+        {
+            String id= reference.document().getId();
+            Event event=new Event();
+            event.setId(id);
+            event.setTitle(titles[i]);
+            event.setDescription(description[i]);
+            event.setTimestamp(System.currentTimeMillis());
+            event.setAddress("J373+7G3, Kashmiri Bazaar Road, Raja Bazar, Rawalpindi, Punjab 46000, Pakistan");
+            event.setCategory(categories[i]);
+            event.setMales(1);
+            event.setFemales(0);
+            event.setLat(33.61333586251414);
+            event.setLon(73.05391162788248);
+            reference.document(id).set(event);
+        }
+
+
 
     }
 

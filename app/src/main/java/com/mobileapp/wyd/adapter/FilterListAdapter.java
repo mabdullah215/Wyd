@@ -16,7 +16,7 @@ public class FilterListAdapter extends RecyclerView.Adapter<FilterListAdapter.Vi
     int selected=0;
     Context mContext;
     private OnItemClickListener onItemClickListener;
-    String[] dataList={"Show All","Bars","Clubs","Church","Special Events","Educational"};
+    String[] dataList={"Show All","Bars","Party","Concert","Social"};
 
     public interface OnItemClickListener
     {
